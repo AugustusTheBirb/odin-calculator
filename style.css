@@ -29,6 +29,7 @@ body {
     justify-content: right;
     display: flex;
     padding: 10px;
+    border: 4px black solid;
 }
 .text {
     font-size: 50px;

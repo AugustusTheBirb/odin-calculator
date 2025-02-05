@@ -11,7 +11,7 @@ function mul(a,b) {
 }
 
 function div(a,b) {
-    if (b == 0) {return "DIVISION BY ZERO"}
+    if (b == 0) {display.innerText = "math error"; return ''}
     return Math.round(1000*parseFloat(a) / parseFloat(b))/1000
 }
 
@@ -25,7 +25,8 @@ function sign(a) {
 
 function update(){
     if (op === '') {
-        display.innerText = num1
+        if (num1 === '') {display.innerText = 0}
+        else {display.innerText = parseFloat(num1.slice(0,14))}
     }
     else {
         display.innerText = num2
@@ -50,7 +51,8 @@ function chooseOperation(val){
 
 function updateNum(val){
     if (op === '') { //means this is the first number, since no op
-        num1 += val
+        if (num1 === '' && val === '0') {}
+        else {num1 += val}
     }
     else {
         num2 += val
@@ -78,6 +80,12 @@ function calculate(){
     update()
 }
 
+function clear() {
+    num1 = ''
+    op = ''
+    num2 = ''
+    update()
+}
 let num1 = '';
 let num2 = '';
 let op = '';
@@ -91,10 +99,7 @@ const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector(".equals")
 
 clearButton.addEventListener("click", () => {
-    num1 = ''
-    op = ''
-    num2 = ''
-    update()
+    clear()
 })
 
 document.querySelectorAll("button").forEach(element => {
