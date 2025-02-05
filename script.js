@@ -97,6 +97,13 @@ clearButton.addEventListener("click", () => {
     update()
 })
 
+document.querySelectorAll("button").forEach(element => {
+    element.addEventListener("mousedown", () => {element.style.cssText = "box-shadow: 0px 0px; transform: translateY(5px)"})
+    element.addEventListener("mouseup", () => element.style.cssText = "")
+})
+
+
+
 equalsButton.addEventListener("click", calculate)
 
 numberButtons.forEach(element => {
